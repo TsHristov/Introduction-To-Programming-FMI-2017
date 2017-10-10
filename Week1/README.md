@@ -6,15 +6,19 @@
   - Data types
     - int, float (just to get started)
   - Input/Output - cin and cout
-
-  + Optional:
+  - Optional:
     - C++ compilation process example
-    
+
+# Relevant resources on the topic:
+  - www.learncpp.com: Chapter 0 and Chapter 1
+  - http://www.cplusplus.com/doc/tutorial/introduction/
+  - C++ Without Fear: Chapter 1 Start Using C++
+
 # The C++ compilation process:
 
 Given a filename 'sample.cpp', the steps to obtain an executable file are as follows:
 
-1. The C++ preprocessor:
+1. Preprocessor:
 
    Extend the 'sample.cpp' source code with the code
    in the included header files via the C++ preprocessor:
@@ -41,6 +45,4 @@ Given a filename 'sample.cpp', the steps to obtain an executable file are as fol
    The object file 'sample_object_file.o' is linked together
    with the object files of any library functions used to
    produce an executable file 'sample'.
-
-   Result in: 'sample'.
 
