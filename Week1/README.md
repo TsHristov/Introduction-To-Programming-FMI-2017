@@ -23,7 +23,7 @@
 1. Preprocessor:
 
    В 'sample.cpp' добавя кода на include-натите header file-ове,
-   , замества символни констани дефинирани чрез #define:
+   , замества символни константи дефинирани чрез #define:
 
      'sample_expanded.cpp'
 
