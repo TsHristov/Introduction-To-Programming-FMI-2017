@@ -18,12 +18,14 @@
 
 По даден C++ файл 'sample.cpp', стъпките за получаване на изпълнима програма са:
 
+* (Вижте резултата от всяка стъпка в съответните файлове)
+
 1. Preprocessor:
 
    В 'sample.cpp' добавя кода на include-натите header file-ове,
    , замества символни констани дефинирани чрез #define:
 
-     'sample_extended.cpp'
+     'sample_expanded.cpp'
 
 2. Compiler:
 
