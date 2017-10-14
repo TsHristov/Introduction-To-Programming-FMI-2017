@@ -1,48 +1,44 @@
-# This week:
-  - Get to know your tools - Visual Studio and CodeBlocks
-  - Compilation of basic "Hello World" C++ program.
-  - Walk-trough of basic syntax.
-  - Variable declarations
-  - Data types
-    - int, float (just to get started)
-  - Input/Output - cin and cout
-  - Optional:
-    - C++ compilation process example
+# Тази седмица:
+  - Запознаване със средите за разработка - Visual Studio and CodeBlocks
+  - Компилация на "Hello World" програма.
+  - Дискусия на използваните конструкции.
+  - Деклариране на променливи
+  - Типове данни
+    - int, float (като за начало)
+  - Вход/Изход - cin и cout
+  - Допълнително
+    - Процес на компилация на С++ програми.
 
-# Relevant resources on the topic:
+# Ресурси към темата:
   - www.learncpp.com: Chapter 0 and Chapter 1
   - http://www.cplusplus.com/doc/tutorial/introduction/
   - C++ Without Fear: Chapter 1 Start Using C++
 
-# The C++ compilation process:
+# Процес на компилация на C++ програми:
 
-Given a filename 'sample.cpp', the steps to obtain an executable file are as follows:
+По даден C++ файл 'sample.cpp', стъпките за получаване на изпълнима програма са:
 
 1. Preprocessor:
 
-   Extend the 'sample.cpp' source code with the code
-   in the included header files via the C++ preprocessor:
+   В 'sample.cpp' добавя кода на include-натите header file-ове,
+   , замества символни констани дефинирани чрез #define:
 
-   Result in: 'sample_extended.cpp'
+     'sample_extended.cpp'
 
 2. Compiler:
 
-   Compile 'sample_extended.cpp'
-   into an assembly code for the current platform:
+   Компилира 'sample_extended.cpp' в код на асемблерен език за текущата платформа:
 
-   Result in: 'sample_assembly.s'
+      'sample_assembly.s'
 
 
 3. Assembler:
 
-   The assembler code 'sample_assembly.s' is assembled into
-   and object code for the platform.
+   Превръща 'sample_assembly.s' в object file за платформата:
 
-   Result in: 'sample_object_file.o'
+      'sample_object_file.o'
 
 4. Linker:
 
-   The object file 'sample_object_file.o' is linked together
-   with the object files of any library functions used to
-   produce an executable file 'sample'.
-
+   Свързва 'sample_object_file.o' с object file-овете на използвани библиотечни
+   функции и се превръща в изпълнима програма.
