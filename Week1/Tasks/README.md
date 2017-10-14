@@ -1,7 +1,17 @@
-# You have the following message in binary code:
+# Даден е следния двоичен код:
 
 '1001000', '1100101', '1101100', '1101100', '1101111', '100000', '1010111', '1101111', '1110010', '1101100', '1100100'
 
-- Transform each byte into decimal representation.
-- Check the result against the ASCII table: http://www.asciichars.com/_site_media/ascii/ascii-chars-landscape.jpg
-- Decode the message :)
+* Превърнете всяка група от 8 бита в десетично число.
+
+  Пример:
+	1 0 0 1 0 0 0 = 72 в десетична бройна система
+	
+* Сравнете числото с ASCII таблицата: http://www.asciichars.com/_site_media/ascii/ascii-chars-landscape.jpg
+
+  Пример:
+	72 е символа 'H'
+	
+* Декодирайте останалата част от съобщението по идентичен начин :)
+
+* Решение на задачата чрез код може да намерите във файла: solution.cpp.
