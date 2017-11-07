@@ -1,24 +1,24 @@
 // УП-практикум, спец.Информатика, 6-та група, Седмица 4
-// Проверка за монотонно растяща редица:
 #include <iostream>
 using namespace std;
 
 int main(){
-  int size;
-  cout << "size=";
-  cin  >> size;
+  int length;
+  cout << "length=";
+  cin  >> length;
+
+  bool odds  = true;
+  bool evens = true;
+  int value;
   
-  int previous = 0;
-  int current  = 0;
-  bool flag    = true;
-  
-  for(int i=0; i < size; i++){
-    cin >> current;
-    if (previous > current) flag = false;
-    previous = current;
+  for(int i=0; i < length; i++){
+    cin >> value;
+    (value&1) ? evens = false : odds = false;
   }
 
-  flag ? cout << "yes\n" : cout << "no\n";
-  
+  if (evens) cout << "all are even\n";
+  else if (odds) cout << "all are odds\n";
+  else cout << "mixed\n";
+
   return 0;
 }
