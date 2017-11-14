@@ -39,7 +39,7 @@ int main(){
 //     Намира максималния елемент в даден масив.
 // Входни параметри на функцията:
 //     -int array[] - указател към масив
-//     -int array_size - големината на масива
+//     -const int array_size - големината на масива
 // Връщан резултат:
 //     -int max - максималния елемент в даден масив
 int max_element(const int array[], const int array_size){
@@ -54,7 +54,7 @@ int max_element(const int array[], const int array_size){
 //     Въвежда съдържанието на масива елемент по елемент.
 // Входни параметри на функцията:
 //     -int array[] - указател към масив
-//     -int array_size - големината на масива
+//     -const int array_size - големината на масива
 void fill_array(int array[], const int array_size){
   cout << "Enter array`s contents:\n";
   for(int i=0; i < array_size; i++){
@@ -67,7 +67,7 @@ void fill_array(int array[], const int array_size){
 //     Изкарва на конзолата, елементите на даден масив.
 // Входни параметри на функцията:
 //     -int array[] - указател към масив
-//     -int array_size - големината на масива
+//     -const int array_size - големината на масива
 void print_array(const int array[], const int array_size){
   for (int i=0; i < array_size; i++) {
     cout << "[" << i << "]=" << array[i] << "\n";
@@ -77,8 +77,8 @@ void print_array(const int array[], const int array_size){
 // Описание:
 //      Обръща съдържанието на подаден масив в друг.
 // Входни параметри на функцията:
-//     -int original[] - оригиналния масив, който ще обърнем
-//     -int reversed[] - резултатния масив, който ще съдържа обърнатия original
+//     -int original[] - указател към оригиналния масив, който ще обърнем
+//     -int reversed[] - указател към резултатния масив, който ще съдържа обърнатия original
 //     -const int array_size - дължината на двата масива
 void reverse_array(const int original[], int reversed[], const int array_size){
   for(int i=0, j=array_size-1; i < array_size && j >= 0; i++, j--){
