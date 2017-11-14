@@ -2,18 +2,25 @@
 #include <iostream>
 using namespace std;
 
-// Декларираме прототипи на всички функции, които ще използваме
-// по-надолу в програмата:
+// Декларираме прототипи на всички функции, които ще използваме.
+// Задаваме типа на параметрите, които те приемат, както и типа на
+// връщания резултат.
 int max_element(int [], int);
 void fill_array(int [], int);
 void print_array(int [], int);
 void reverse_array(int [], int [], int);
 
 int main(){
+  // Дължината на масив в C++ трябва да
+  // е константна, затова декларираме array_size
+  // като const:
   const int array_size = 5;
+  // Създаваме два масива, съдържащи целочислени променливи (int),
+  // и дължина array_size (5).
   int numbers[array_size];
   int numbers_reversed[array_size];
-  
+
+  // Извикваме съответните функции за манипулация на масивите:
   fill_array(numbers, array_size);
   cout << "Contents of numbers array:\n";
   print_array(numbers, array_size);
@@ -26,16 +33,29 @@ int main(){
   return 0;
 }
 
-// Дефинираме функциите, които декларирахме преди main():
-int max_element(int array[], const int size){
+// Дефинираме функциите, които декларирахме преди main:
+
+// Описание:
+//     Намира максималния елемент в даден масив.
+// Входни параметри на функцията:
+//     -int array[] - указател към масив
+//     -int array_size - големината на масива
+// Връщан резултат:
+//     -int max - максималния елемент в даден масив
+int max_element(int array[], const int array_size){
   int max = array[0];
-  for(int i=1; i < size; i++){
+  for(int i=1; i < array_size; i++){
     if (array[i] > max) max = array[i];
   }
   return max;
 }
 
-void fill_array(int array[], int array_size){
+// Описание:
+//     Въвежда съдържанието на масива елемент по елемент.
+// Входни параметри на функцията:
+//     -int array[] - указател към масив
+//     -int array_size - големината на масива
+void fill_array(int array[], const int array_size){
   cout << "Enter array`s contents:\n";
   for(int i=0; i < array_size; i++){
     cout << "[" << i << "]=";
@@ -43,14 +63,25 @@ void fill_array(int array[], int array_size){
   }
 }
 
-void print_array(int array[], int array_size){
+// Описание:
+//     Изкарва на конзолата, елементите на даден масив.
+// Входни параметри на функцията:
+//     -int array[] - указател към масив
+//     -int array_size - големината на масива
+void print_array(int array[], const int array_size){
   for (int i=0; i < array_size; i++) {
     cout << "[" << i << "]=" << array[i] << "\n";
   }
 }
 
-void reverse_array(int original[], int reversed[], int size){
-  for(int i=0, j=size-1; i < size && j >= 0; i++, j--){
+// Описание:
+//      Обръща съдържанието на подаден масив в друг.
+// Входни параметри на функцията:
+//     -int original[] - оригиналния масив, който ще обърнем
+//     -int reversed[] - резултатния масив, който ще съдържа обърнатия original
+//     -const int array_size - дължината на двата масива
+void reverse_array(int original[], int reversed[], const int array_size){
+  for(int i=0, j=array_size-1; i < array_size && j >= 0; i++, j--){
     reversed[i] = original[j];
   }
 }
