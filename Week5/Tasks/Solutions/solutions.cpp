@@ -7,6 +7,11 @@ using namespace std;
 // връщания резултат.
 int max_element(const int [], const int);
 int min_element(const int [], const int);
+int count_evens(const int [], const int);
+int count_odds(const int [], const int);
+int array_sum(const int [], const int);
+int array_product(const int [], const int);
+bool monotonic_increasing(const int [], const int);
 void fill_array(int [], const int);
 void print_array(const int [], const int);
 void reverse_array(const int [], int [], const int);
@@ -35,6 +40,22 @@ int main(){
   cout << "Min element in the array: " \
        << min_element(numbers, array_length) << "\n";
 
+  // Намиране на брой четни/нечетени елементи в масив:
+  int evens_count = count_evens(numbers, array_length);
+  int odds_count  = count_odds(numbers, array_length);
+  cout << "Count of evens:" << evens_count << "\n";
+  cout << "Count of odds:" << odds_count << "\n";
+  
+  // Намиране на сума/произведение на елементи на масив:
+  int sum = array_sum(numbers, array_length);
+  int product = array_product(numbers, array_length);
+  cout << "Sum:" << sum << "\n";
+  cout << "Product:" << product << "\n";
+
+  // Проверка дали масива е монотонно растяща редица:
+  bool is_monotonic_increasing = monotonic_increasing(numbers, array_length);
+  cout << "The array is monotonic increasing sequence: " \
+       << ((is_monotonic_increasing) ? "yes\n" : "no\n");
   // Обръщане на масив, чрез помощен:
   reverse_array(numbers, numbers_reversed, array_length);
   cout << "Contents of reversed numbers array:\n";
@@ -84,12 +105,88 @@ int min_element(const int array[], const int array_length){
 }
 
 // Описание:
+//      Намира броя четни елементи в даден масив.
+// Входни параметри на функцията:
+//     -const int array[] - указател към масив
+//     -const int array_length - големината на масива
+// Връщан резултат:
+//     -int count - брой четни елементи в даден масив
+int count_evens(const int array[], const int array_length){
+  int count = 0;
+  for(int i=0;i<array_length;i++){
+    if(array[i] % 2 == 0) count++;
+  }
+  return count;
+}
+
+// Описание:
+//      Намира броя нечетни елементи в даден масив.
+// Входни параметри на функцията:
+//     -const int array[] - указател към масив
+//     -const int array_length - големината на масива
+// Връщан резултат:
+//     -int count - брой нечетни елементи в даден масив
+int count_odds(const int array[], const int array_length){
+  int count = 0;
+  for(int i=0;i<array_length;i++){
+    if(array[i] % 2 != 0) count++;
+  }
+  return count;
+}  
+
+// Описание:
+//      Проверява дали масива представлява монотонно нарастваща редица.
+// Входни параметри на функцията:
+//     -const int array[] - указател към масив
+//     -const int array_length - големината на масива
+// Връщан резултат:
+//     -bool is_monotonic_increasing - True/False в зависимост от това
+//                                     дали масива е монотонно намаляваща редица. 
+bool monotonic_increasing(const int array[], int array_length){
+  bool is_monotonic_increasing = true;
+  for(int i=0; i<array_length-1; i++){
+    if(!(array[i]<=array[++i])) is_monotonic_increasing = false;
+  }
+  return is_monotonic_increasing;
+}
+
+// Описание:
+//      Намира сумата на числата в даден масив.
+// Входни параметри на функцията:
+//     -const int array[] - указател към масив
+//     -const int array_length - големината на масива
+// Връщан резултат:
+//     -int sum - сумата на числата в даден масив
+int array_sum(const int array[], const int array_length){
+  int sum = 0;
+  for(int i=0; i<array_length; i++) {
+    sum += array[i];
+  }
+  return sum;
+}
+
+// Описание:
+//      Намира произведението на числата в даден масив.
+// Входни параметри на функцията:
+//     -const int array[] - указател към масив
+//     -const int array_length - големината на масива
+// Връщан резултат:
+//     -int product - произведението на числата в даден масив
+int array_product(const int array[], const int array_length){
+  int product = 1;
+  for(int i=0; i<array_length; i++) {
+    product *= array[i];
+  }
+  return product;
+}
+
+// Описание:
 //     Въвежда съдържанието на масива елемент по елемент.
 // Входни параметри на функцията:
 //     -int array[] - указател към масив
 //     -const int array_length - големината на масива
 void fill_array(int array[], const int array_length){
-  cout << "Enter array`s contents:\n";
+  cout << "Enter array`s contents (length 5):\n";
   for(int i=0; i < array_length; i++){
     cout << "[" << i << "]=";
     cin  >> array[i];
