@@ -5,7 +5,6 @@ const int MAX_LENGTH=7;
 
 void selection_sort(int [], const int);
 void bubble_sort(int [], const int);
-void insertion_sort(int [], const int);
 void swap(int [], int, int);
 void fill_array(int [], const int);
 void print_array(const int [], const int);
@@ -62,8 +61,13 @@ void swap(int array[], int i, int j){
 //     -const int array_length - големината на масива
 void selection_sort(int array[], const int array_length){
   int min;
+  // На всяка стъпка първите i елементи са вече сортирани:
   for(int i=0; i<array_length-1; i++){
+    // Минималният елемент е текущият елемент:
     min = i;
+    // За всеки останали array_length - i на брой елементи
+    // проверяваме дали някой от тях е по-малък от текущия минимален,
+    // , ако е така, то ги разменяме:
     for(int j=i+1; j<array_length; j++){
       if(array[j] < array[min]){
 	min = j;
@@ -75,7 +79,7 @@ void selection_sort(int array[], const int array_length){
 
 
 // Описание:
-//      Сортира масив по използвайки Bubble Sort.
+//      Сортира масив използвайки Bubble Sort.
 // Входни параметри на функцията:
 //     -int array[] - указател към масив
 //     -const int array_length - големината на масива
