@@ -2,98 +2,60 @@
 #include <iostream>
 using namespace std;
 
-const int MAX_LENGTH = 7;
+const int MAX_TEXT_LENGTH = 7;
+const int MAX_SUBSTRING_LENGTH = 4;
 
-void selection_sort(int [], const int);
-void swap(int [], int, int);
-void copy_array(const int[], int [], const int);
-void fill_array(int [], const int);
-void print_array(const int [], const int);
-bool check_uniqueness(const int [], const int);
+void fill_array(char [], const int);
+bool check_substring(const char [], const char []);
 
 int main(){
-  int array[MAX_LENGTH];
-  fill_array(array, MAX_LENGTH);
-  print_array(array, MAX_LENGTH);
-  bool uniques_only = check_uniqueness(array, MAX_LENGTH);
-  (uniques_only) ? cout << "Uniques only!\n" : \
-                   cout << "Not all elements are unique!\n";
+  char text[MAX_TEXT_LENGTH];
+  char substring[MAX_SUBSTRING_LENGTH];
+  fill_array(text, MAX_TEXT_LENGTH);
+  fill_array(substring, MAX_SUBSTRING_LENGTH);
+
+  bool match = check_substring(text, substring);
+  cout << "String " << substring << " in " << text << ":";
+  (match) ? cout << "Yes\n" : cout << "No\n";
+
+  return 0;
 }
 
 
 // Описание:
-//     Копира масива source в масива destination.
+//     Проверява дали char масива substring се среща
+//     в text.
 // Входни параметри на функцията:
-//     -const int source[] - указател към масив
-//     -const int destination[] - указател към масив
-//     -const int array_length - големината на масива
-void copy_array(const int source[], int destination[], const int array_length){
-  for(int i=0; i<array_length; i++){
-    destination[i] = source[i];
-  }
-}
-
-
-// Описание:
-//     Проверява дали даден масив се състои само от уникални елементи.
-// Входни параметри на функцията:
-//     -const int array[] - указател към масив
-//     -const int array_length - големината на масива
-bool check_uniqueness(const int array[], const int array_length){
-  // Тъй като не искаме да променяме входния масив,
-  // заради проверката за уникални елементи,
-  // правим негово копие:
-  int array_copy[array_length];
-  copy_array(array, array_copy, array_length);
-  // Флаг, който установява хипотеза за някакво свойство на
-  // масива. В случая, хипотезата е, че всички негови елементи
-  // са уникални.
-  bool uniques_only = true;
-  // Сортираме масива, за да си гарантираме, че ако има
-  // два еднакви елемента, то те ще се намират един до друг:
-  selection_sort(array_copy, array_length);
-  for(int i=0; i<array_length-1; i++){
-    // Ако сме се натъкнали на два еднакви елемента, то
-    // хипотезата е нарушена:
-    if(array_copy[i]==array_copy[i-1]) uniques_only = false;
-  }
-  return uniques_only;
-}
-
-
-void swap(int array[], int i, int j){
-  int temp = array[i];
-  array[i] = array[j];
-  array[j] = temp;
-}
-
-
-void selection_sort(int array[], const int array_length){
-  int min;
-  for(int i=0; i<array_length-1; i++){
-    min = i;
-    for(int j=i+1; j<array_length; j++){
-      if(array[j] < array[min]){
-	min = j;
-	swap(array, i, j);
+//     -const char text[] - указател към char масив
+//     -const char substring[] - указател към масив
+// Връщан резултат:
+//     -true/false - в зависимост от това дали substring се среща в
+//                   text
+// Кода по-долу има грешка в един конкретен случай, може ли да намерите в кой? :)
+bool check_substring(const char text[], const char substring[]){
+  // Флаг, който установява първоначална хипотеза за масива.
+  // В случая, това е че подниз се среща в дадения масив:
+  bool match = true;
+  for(int i=0; i<MAX_TEXT_LENGTH; i++){
+    // Ако някой от символите в масива съвпада с началото на
+    // подниза, то обхождаме и двата едновременно и проверяваме
+    // дали и останалите символи съвпадат:
+    if(text[i]==substring[0]){
+      for(int j=0; j<MAX_SUBSTRING_LENGTH && i<MAX_TEXT_LENGTH; j++, i++){
+	if(text[i] != substring[j]){
+	  match = false;
+	  break;
+	}
       }
     }
   }
+  return match;
 }
 
 
-void fill_array(int array[], const int array_length){
-  cout << "Enter array`s contents (length " << array_length << "):\n";
+void fill_array(char array[], const int array_length){
+  cout << "Enter char array's contents (length " << array_length << "):\n";
   for(int i=0; i < array_length; i++){
-    cout << "[" << i << "]=";
     cin  >> array[i];
   }
-}
-
-
-void print_array(const int array[], const int array_length){
-  for (int i=0; i < array_length; i++) {
-    cout << "|" << array[i] << "|" << " ";
-  }
-  cout << "\n";
 }
