@@ -22,5 +22,6 @@
   * Програма, която илюстрира работата с масиви и функции.
     Намиране на най-големия елемент и обръщане на масив:
         `Examples/arrays_and_functions_example.cpp`
-  * Програма, която демонстрира метода за сортиране Selection Sort:
-        `Examples/selection_sort.cpp`
+  * Програма, която демонстрира методите за сортиране Selection Sort, Bubble Sort и
+    търсене чрез Binary Search:
+        `Examples/sorting_searching.cpp`
