@@ -5,9 +5,7 @@ const int MAX_LENGTH=7;
 
 void selection_sort(int [], const int);
 void bubble_sort(int [], const int);
-void insertion_sort(int array[]){
-  
-}
+void insertion_sort(int [], const int);
 
 void swap(int [], int, int);
 void fill_array(int [], const int);
@@ -23,10 +21,9 @@ int main(){
   cout << "Original: ";
   print_array(array, MAX_LENGTH);
 
-
   // Сортираме масива, използвайки някой от имплементираните методи:
   // selection_sort(array, MAX_LENGTH);
-  bubble_sort(array, MAX_LENGTH);
+  insertion_sort(array, MAX_LENGTH);
   cout << "Sorted: ";
   print_array(array, MAX_LENGTH);
 
@@ -35,7 +32,7 @@ int main(){
   int search_value;
   cout << "Enter search value: ";
   cin  >> search_value;
-  int found_at = binary_search(array, 0, MAX_LENGTH-1, search_value);
+  int found_at = binary_search_recursive(array, 0, MAX_LENGTH-1, search_value);
   if(found_at == -1){
     cout << "Value " << search_value << " not found.\n";
   } else {
@@ -112,6 +109,22 @@ void bubble_sort(int array[], const int array_length){
 
 
 // Описание:
+//      Сортира масив използвайки Insertion Sort.
+// Входни параметри на функцията:
+//     -int array[] - указател към масив
+//     -const int array_length - големината на масива
+void insertion_sort(int array[], const int array_length){
+  for(int i=1; i < array_length; i++){
+    // Взимаме първия елемент (i-тият в този случай) от несортираната част и проверяваме дали
+    // e по-малък от елемент от сортираната част (с индекси [0, i)). В случай, че е по-малък то
+    // разменяме местата им и повтаряме процедурата докато не намерим правилната позиция
+    // на разглеждания елемент (няма елемнти в ляво от него, които са по-малки от него):
+    for(int j=i; j > 0 && array[j] < array[j-1]; j--) swap(array, j, j-1);
+  }
+}
+
+
+// Описание:
 //      Намира индекс на търсена стойност в сортиран масив, използвайки
 //      Двоично Търсене (итеративен вариант). Последователно разделя масива на леви/десни интервали за
 //      търсене в зависимост от това дали търсената стойност е < или > от
@@ -124,7 +137,7 @@ void bubble_sort(int array[], const int array_length){
 //            Връща -1 ако такава не бъде открита.
 int binary_search_iterative(const int arr[], const int value){
   int left   = 0;
-  int right  = SIZE - 1;
+  int right  = MAX_LENGTH - 1;
   int middle = -1;
 
   while(left <= right){
@@ -162,7 +175,7 @@ int binary_search_recursive(int array[], int left, int right, const int value){
     // то търсим в десния подинтервал:
     if(value > array[middle]) left  = middle+1;
     // Рекурсивно извикваме функцията с новите граници на интервала:4 2
-    return binary_search(array, left, right, value);
+    return binary_search_recursive(array, left, right, value);
   }
   return -1;
 }
