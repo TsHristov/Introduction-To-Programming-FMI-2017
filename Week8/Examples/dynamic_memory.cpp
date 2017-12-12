@@ -83,7 +83,8 @@ void print_array(const int * array, const int size){
 // Връщан резултат:
 //     -void
 void copy_array(const int * original, int *& copy, const int size){
-  copy  = new (nothrow) int[size];
+  // Ако паметта не е била заделена до момента:
+  if (!copy) copy  = new (nothrow) int[size];
   if(copy == NULL){
     // Ако заделянето на памет е пропаднало,
     // то освобождаваме ресурсите заети до момента:
