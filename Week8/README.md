@@ -11,6 +11,8 @@
 # Примерни програми:
    * Пример за базови употреби на указатели:
      `Examples/pointers_basics.cpp`
+   * Пример за аналогията между указатели и масиви:
+     `Examples/pointers_and_arrays.cpp`
    * Пример за работа с динамична памет:
      `Examples/dynamic_memory.cpp`
    
